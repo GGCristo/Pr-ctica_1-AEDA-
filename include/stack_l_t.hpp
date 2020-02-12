@@ -61,4 +61,10 @@ namespace AEDA {
 		}
 
 	};
+	template <class T>
+	ostream& operator << (ostream& os, stack_l_t<T>& pila)
+	{
+		pila.write(os);
+		return os;
+	}
 }

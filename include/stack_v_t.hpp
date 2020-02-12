@@ -57,23 +57,11 @@ namespace AEDA {
 		}
 
 	};
-
-
-
 	template <class T>
-	class TAD_stack_t{
-
-	public:
-		TAD_stack_t(void) {}
-		virtual ~TAD_stack_t(void) {}
-
-		virtual bool empty(void)            = 0;
-		virtual T top(void)                 = 0;
-		virtual void pop(void)              = 0;
-		virtual void push(T dato)           = 0;
-
-		virtual ostream& write(ostream& os) = 0;
-	};
-
+	ostream& operator << (ostream& os, stack_v_t<T>& pila)
+	{
+		pila.write(os);
+		return os;
+	}
 
 }

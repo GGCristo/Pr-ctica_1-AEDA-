@@ -77,4 +77,10 @@ namespace AEDA {
 		}
 
 	};
+	template <class T>
+	ostream& operator << (ostream& os, queue_l_t<T>& cola)
+	{
+		cola.write(os);
+		return os;
+	}
 }

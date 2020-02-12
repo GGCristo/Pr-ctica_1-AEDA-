@@ -179,6 +179,12 @@ class dll_t {
 
 	return os;
     }
+    template<class T>
+    ostream& operator << (ostream&os, dll_t<T>& list)
+    {
+        list.write(os);
+        return os;
+    }
 
 template <class T>
 void dll_t<T>::remove(dll_node_t<T>* nodo) 

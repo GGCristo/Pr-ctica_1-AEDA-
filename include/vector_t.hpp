@@ -75,6 +75,7 @@ namespace AEDA {
 			os << endl;
 			return os;
 		}
+		
 
 		istream& read(istream& is){
 	
@@ -129,6 +130,11 @@ namespace AEDA {
 		os << endl;
 		return os;
 	}
-
+	template <class T>
+	ostream& operator << (ostream& os, vector_t<T> vector)
+	{
+		vector.write(os);
+		return os;
+	}
 	
 }

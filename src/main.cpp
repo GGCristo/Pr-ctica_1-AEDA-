@@ -11,8 +11,6 @@ using namespace AEDA;
 
 int main(){
 
-  std::cout << "Hola\n";
-
   std::cout << "Vector de enteros\n";
   vector_t<TDato> vector_i(5);
   vector_i.get_set_v(0) = 0;
@@ -21,7 +19,7 @@ int main(){
   vector_i.get_set_v(3) = 3;
   vector_i.push_back() = 2;
 
-  vector_i.write(std::cout);
+  std::cout << vector_i;
 
   std::cout << "Vector de dobles\n";
   vector_t<double> vector_d(5);
@@ -31,7 +29,7 @@ int main(){
   vector_d.get_set_v(3) = 3.2;
   vector_d.push_back() = 2.1;
 
-  vector_d.write(std::cout);
+  std::cout << vector_d;
 
   std::cout << "Lista doblemente enlazada\n";
   dll_t<TDato> lista_d;
@@ -42,7 +40,7 @@ int main(){
   lista_d.insert_tail(new dll_node_t<int> (5));
   lista_d.insert_tail(new dll_node_t<int> (6));
 
-  lista_d.write(std::cout);
+  std::cout << lista_d;
 
   std::cout << "pila_v con vector\n";
   stack_v_t<TDato> pila_v;
@@ -53,7 +51,7 @@ int main(){
   pila_v.push(1);
   pila_v.push(-1);
 
-  pila_v.write(std::cout);
+  std::cout << pila_v;
 
   std::cout << "Pila con lista\n";
   stack_l_t<TDato> pila_l;
@@ -64,7 +62,7 @@ int main(){
   pila_l.push(1);
   pila_l.push(-1);
 
-  pila_l.write(std::cout);
+  std::cout << pila_l;
 
   std::cout << "Cola\n";
   queue_l_t<TDato> cola;
@@ -74,7 +72,7 @@ int main(){
   cola.push(2);
   cola.push(1);
 
-  cola.write(std::cout);
-  
+  std::cout << cola;
+
   return 0;
 }
