@@ -58,6 +58,10 @@ namespace AEDA {
 
 			return v_[pos];
 		}
+		T& push_back()
+		{
+			return v_[sz_ - 1];
+		}
 
 		ostream& write(ostream& os) const{
 	
@@ -68,7 +72,7 @@ namespace AEDA {
 				v_[i].write(os);
 				os << " ";
 			}
-
+			os << endl;
 			return os;
 		}
 
@@ -109,7 +113,7 @@ namespace AEDA {
 		for(int i = 0; i < sz_; i ++)
 		 	os << setw(8) << fixed << setprecision(2) << v_[i] << " ";
 
-
+		os << endl;
 		return os;
 	}
 
@@ -122,7 +126,7 @@ namespace AEDA {
 		for(int i = 0; i < sz_; i ++)
 		 	os << setw(8)  << v_[i] << " ";
 
-
+		os << endl;
 		return os;
 	}
 
