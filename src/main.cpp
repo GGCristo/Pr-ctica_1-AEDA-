@@ -4,6 +4,8 @@
 #include "../include/dll_t.hpp"
 #include "../include/stack_l_t.hpp"
 #include "../include/stack_v_t.hpp"
+#include "../include/queue_l_t.hpp"
+
 typedef int TDato;
 using namespace AEDA;
 
@@ -64,5 +66,15 @@ int main(){
 
   pila_l.write(std::cout);
 
+  std::cout << "Cola\n";
+  queue_l_t<TDato> cola;
+  cola.push(5);
+  cola.push(4);
+  cola.push(3);
+  cola.push(2);
+  cola.push(1);
+
+  cola.write(std::cout);
+  
   return 0;
 }
