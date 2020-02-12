@@ -8,96 +8,94 @@ using namespace std;
 
 namespace AEDA {
 
-    template <class T>
-    class dll_node_t {
+	template <class T>
+  class dll_node_t {
     private:
 
-        dll_node_t<T>* next_;
-        dll_node_t<T>* prev_;
+      dll_node_t<T>* next_;
+      dll_node_t<T>* prev_;
 
-	T              data_;
+			T              data_;
 
     public:
-        dll_node_t();
-	dll_node_t(const T& data);
+      dll_node_t();
+			dll_node_t(const T& data);
 
-        virtual ~dll_node_t(void);
+      virtual ~dll_node_t(void);
 
-	void set_next(dll_node_t<T>*);
-	void set_prev(dll_node_t<T>*);
+			void set_next(dll_node_t<T>*);
+			void set_prev(dll_node_t<T>*);
 
-	dll_node_t<T>* get_next(void) const;
-	dll_node_t<T>* get_prev(void) const;
+			dll_node_t<T>* get_next(void) const;
+			dll_node_t<T>* get_prev(void) const;
 
-	void set_data(const T& data);
-	T get_data(void) const;
+			void set_data(const T& data);
+			T get_data(void) const;
 
-	ostream& write(ostream& os) const;
-    };
+			ostream& write(ostream& os) const;
+  };
 
-
-template <class T>
-dll_node_t<T>::dll_node_t() :
-next_(NULL),
-prev_(NULL),
-data_()
-{
-}
 
 template <class T>
-dll_node_t<T>::dll_node_t(const T& data) :
-next_(NULL),
-prev_(NULL),
-data_(data) 
-{}
+	dll_node_t<T>::dll_node_t() :
+	next_(NULL),
+	prev_(NULL),
+	data_(){}
 
 template <class T>
-dll_node_t<T>::~dll_node_t(void) {
-prev_ = NULL;
-next_ = NULL;
-}
+	dll_node_t<T>::dll_node_t(const T& data) :
+	next_(NULL),
+	prev_(NULL),
+	data_(data){}
 
 template <class T>
-void dll_node_t<T>::set_next(dll_node_t<T>* next)
-{
-	next_ = next;
-}
+	dll_node_t<T>::~dll_node_t(void) 
+	{
+	prev_ = NULL;
+	next_ = NULL;
+	}
 
 template <class T>
-dll_node_t<T>* dll_node_t<T>::get_next(void) const
-{
-	return next_;
-}
+	void dll_node_t<T>::set_next(dll_node_t<T>* next)
+	{
+		next_ = next;
+	}
 
 template <class T>
-void dll_node_t<T>::set_prev(dll_node_t<T>* prev)
-{
-	prev_ = prev;
-}
+	dll_node_t<T>* dll_node_t<T>::get_next(void) const
+	{
+		return next_;
+	}
 
 template <class T>
-dll_node_t<T>* dll_node_t<T>::get_prev(void) const
-{
-	return prev_;
-}
+	void dll_node_t<T>::set_prev(dll_node_t<T>* prev)
+	{
+		prev_ = prev;
+	}
 
 template <class T>
-void dll_node_t<T>::set_data(const T& data)
-{
-	data_ = data;
-}
+	dll_node_t<T>* dll_node_t<T>::get_prev(void) const
+	{
+		return prev_;
+	}
 
 template <class T>
-T dll_node_t<T>::get_data(void) const
-{
-	return data_;
-}
+	void dll_node_t<T>::set_data(const T& data)
+	{
+		data_ = data;
+	}
 
 template <class T>
-ostream& dll_node_t<T>::write(ostream& os) const
-{
-	os << data_;
-	return os;
-}
+	T dll_node_t<T>::get_data(void) const
+	{
+		return data_;
+	}
+
+template <class T>
+	ostream& dll_node_t<T>::write(ostream& os) const
+	{
+		os << data_;
+		return os;
+	}
 
 }

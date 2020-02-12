@@ -10,8 +10,8 @@ using namespace std;
 
 namespace AEDA {
 
-    template <class T>
-    class dll_t {
+template <class T>
+class dll_t {
     private:
         dll_node_t<T>* head_;
         dll_node_t<T>* tail_;
@@ -86,8 +86,8 @@ namespace AEDA {
             head_ = nodo;
             tail_ = head_;
         } else {
-            head_->set_prev(nodo);
-            nodo->set_next(head_);
+            head_ -> set_prev(nodo);
+            nodo -> set_next(head_);
             head_ = nodo;
         }
 
@@ -96,15 +96,15 @@ namespace AEDA {
 
     template <class T>
     void dll_t<T>::insert_tail(dll_node_t<T>* nodo) {
-
+        
         assert(nodo != NULL);
 
         if (empty()) {
             head_ = nodo;
             tail_ = head_;
         } else {
-            tail_->set_next(nodo);
-            nodo->set_prev(tail_);
+            tail_ -> set_next(nodo);
+            nodo -> set_prev(tail_);
             tail_ = nodo;
         }
 
@@ -118,17 +118,17 @@ namespace AEDA {
 
         dll_node_t<T>* aux = tail_;
 
-        tail_ = tail_->get_prev();
+        tail_ = tail_ -> get_prev();
 
         if (tail_ != NULL)
-            tail_->set_next(NULL);
+            tail_ -> set_next(NULL);
         else
             head_ = NULL;
 
         sz_--;
 
-	aux->set_next(NULL);
-	aux->set_prev(NULL);
+	aux -> set_next(NULL);
+	aux -> set_prev(NULL);
 
         return aux;
     }
@@ -140,17 +140,17 @@ namespace AEDA {
 
         dll_node_t<T>* aux = head_;
 
-        head_ = head_->get_next();
+        head_ = head_ -> get_next();
 
         if (head_)
-            head_->set_prev(NULL);
+            head_ -> set_prev(NULL);
         else
             tail_ = NULL;
 
         sz_--;
 
-	aux->set_next(NULL);
-	aux->set_prev(NULL);
+	aux -> set_next(NULL);
+	aux -> set_prev(NULL);
 
         return aux;
     }
@@ -171,36 +171,38 @@ namespace AEDA {
         dll_node_t<T>* aux = head_;
 
         while (aux != NULL) {
-            aux->write(os);
+            aux -> write(os);
             aux = aux->get_next();
         }
+
+        os << endl;
 
 	return os;
     }
 
-    template <class T>
-    void dll_t<T>::remove(dll_node_t<T>* nodo) {
+template <class T>
+void dll_t<T>::remove(dll_node_t<T>* nodo) 
+{
 			
-        assert(nodo != NULL);
+    assert(nodo != NULL);
 
-        if (nodo->get_prev() != NULL)
-            nodo->get_prev()->set_next(nodo->get_next());
-        else
-            head_ = nodo->get_next();
+    if (nodo -> get_prev() != NULL)
+        nodo -> get_prev() -> set_next(nodo->get_next());
+    else
+        head_ = nodo->get_next();
 
-        if (nodo->get_next() != NULL)
-            nodo->get_next()->set_prev(nodo->get_prev());
-        else
-            tail_ = nodo->get_prev();
+    if (nodo -> get_next() != NULL)
+        nodo -> get_next() -> set_prev(nodo->get_prev());
+    else
+        tail_ = nodo -> get_prev();
 
 	delete nodo;
 
-        sz_--;
+    sz_--;
+}
 
-    }
-
-    template <class T>
-    int dll_t<T>::get_size(void) {
-        return sz_;
-    }	
+template <class T>
+int dll_t<T>::get_size(void) {
+    return sz_;
+}	
 }
