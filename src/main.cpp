@@ -6,18 +6,18 @@
 #include "../include/stack_v_t.hpp"
 #include "../include/queue_l_t.hpp"
 
-typedef int TDato;
+
 using namespace AEDA;
 
 int main(){
-
+  typedef int TDato;
   std::cout << "Vector de enteros\n";
   vector_t<TDato> vector_i(5);
   vector_i.get_set_v(0) = 0;
   vector_i.get_set_v(1) = 5;
   vector_i.get_set_v(2) = 4;
   vector_i.get_set_v(3) = 3;
-  vector_i.push_back() = 2;
+  vector_i.push_back(2);
 
   std::cout << vector_i;
 
@@ -27,7 +27,7 @@ int main(){
   vector_d.get_set_v(1) = 5.4;
   vector_d.get_set_v(2) = 4.3;
   vector_d.get_set_v(3) = 3.2;
-  vector_d.push_back() = 2.1;
+  vector_d.push_back(2.1);
 
   std::cout << vector_d;
 

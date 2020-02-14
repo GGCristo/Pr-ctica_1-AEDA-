@@ -33,6 +33,11 @@ namespace AEDA {
 			destruye_vector();
 		}
 
+		const int& size ()
+		{
+			return sz_;
+		} 
+
 		void resize(int sz)
 		{
 			destruye_vector();
@@ -58,9 +63,15 @@ namespace AEDA {
 
 			return v_[pos];
 		}
-		T& push_back()
+
+		T* begin()
 		{
-			return v_[sz_ - 1];
+			return v_;
+		}
+
+		void push_back(const T& dato)
+		{
+			v_[sz_ - 1] = dato;
 		}
 
 		ostream& write(ostream& os) const{
@@ -136,5 +147,6 @@ namespace AEDA {
 		vector.write(os);
 		return os;
 	}
+	
 	
 }
