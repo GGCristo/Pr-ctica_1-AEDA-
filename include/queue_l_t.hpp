@@ -22,48 +22,48 @@ namespace AEDA {
 
         ~queue_l_t(void) {}
 
-        bool empty(void){
+        bool empty(void)
+        {
           return l_.empty();
         }
 
-        int size(void){
+        int size(void)
+        {
           return l_.get_size();		
         }
 
-        T front(void){
-
-          assert(!empty());
+        T front(void)
+        {
+           assert(!empty());
 
           dll_node_t<T>* node = l_.get_tail();
           T data = node->get_data();
           return (data);
         }
 
-        T back(void){
-
+        T back(void)
+        {
           assert(!empty());
-
           dll_node_t<T>* node = l_.get_head();
           T data = node->get_data();
           return (data);
         }
 
-        void pop(void){
+        void pop(void)
+        {
           assert(!empty());			
-
           dll_node_t<T>* node = l_.extract_tail();
           delete node;
         }
 
-        void push(T dato){
-
+        void push(T dato)
+        {
           dll_node_t<T>* node = new dll_node_t<T>(dato);
           l_.insert_head(node);
         }
 
-        ostream& write(ostream& os){
-
-
+        ostream& write(ostream& os)
+        {
           dll_node_t<T>* aux = l_.get_head();
 
           while(aux != NULL){

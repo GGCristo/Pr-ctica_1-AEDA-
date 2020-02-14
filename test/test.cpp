@@ -80,6 +80,38 @@ TEST_CASE ("Modificaciones en la pila")
     REQUIRE(pila_l.top() == 1);
   }
 }
+TEST_CASE ("Modificaciones en la cola")
+{
+  queue_l_t<TDato> cola_l;
+
+  SECTION ("Cola vacia")
+  {
+    REQUIRE(cola_l.empty());
+  }
+
+  SECTION ("Front y push")
+  {
+    cola_l.push(1);
+    cola_l.push(2);
+    REQUIRE(cola_l.front() == 1);
+  }
+
+  SECTION ("Back y push")
+  {
+    cola_l.push(1);
+    cola_l.push(2);
+    REQUIRE(cola_l.back() == 2);
+  }
+
+  SECTION ("Pop")
+  {
+    cola_l.push(1);
+    cola_l.push(2);
+    cola_l.pop();
+    REQUIRE(cola_l.back() == 2);
+  }
+}
+
 TEST_CASE ("Listas dobles")
 {
   
