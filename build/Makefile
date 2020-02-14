@@ -7,4 +7,4 @@ testeo:
 exe:
 	./../test/test
 clean:
-	rm ../bin/main
+	rm ../bin/main ../test/test

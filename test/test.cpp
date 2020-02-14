@@ -19,8 +19,8 @@ TEST_CASE("Modificaciones en el vector")
   
   SECTION ("Accedo a un elemento")
   {
-    vector_i.get_set_v(5) = 3;
-    REQUIRE(vector_i.get_v(5) == 3); 
+    vector_i.get_set_v(4) = 3;
+    REQUIRE(vector_i.get_v(4) == 3); 
   }
 
   SECTION ("Uso la función push-back")
@@ -50,14 +50,43 @@ TEST_CASE("Modificaciones en el vector")
   }
   
 }
+TEST_CASE ("Modificaciones en la pila")
+{
+  stack_v_t<TDato> pila_v;
+  stack_l_t<TDato> pila_l;
 
+  SECTION ("Pila vacia")
+  {
+    REQUIRE(pila_v.empty());
+    REQUIRE (pila_l.empty());
+  }
+
+  SECTION ("Top y push")
+  {
+    pila_v.push(5);
+    pila_l.push(5);
+    REQUIRE(pila_v.top() == 5);
+    REQUIRE(pila_l.top() == 5);
+  }
+  SECTION ("Pop")
+  {
+    pila_v.push(1);
+    pila_v.push(2);
+    pila_v.pop();
+    pila_l.push(1);
+    pila_l.push(2);
+    pila_l.pop();
+    REQUIRE(pila_v.top() == 1);
+    REQUIRE(pila_l.top() == 1);
+  }
+}
 TEST_CASE ("Listas dobles")
 {
   
   dll_t<TDato> lista;
   REQUIRE (lista.get_size() == 0);
 
-  SECTION("Insert_after")
+  SECTION ("Insert_after")
   {
     lista.insert_head(new dll_node_t<TDato>(1));
     lista.insert_head(new dll_node_t<TDato>(3));
