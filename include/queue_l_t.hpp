@@ -10,77 +10,77 @@ using namespace std;
 
 namespace AEDA {
 
-	template <class T>
-	class queue_l_t{
-	private:
+  template <class T>
+    class queue_l_t{
+      private:
 
-		dll_t<T>    l_;
+        dll_t<T>    l_;
 
-	public:	
-		queue_l_t(void):
-		l_() {}
+      public:	
+        queue_l_t(void):
+          l_() {}
 
-		~queue_l_t(void) {}
+        ~queue_l_t(void) {}
 
-		bool empty(void){
-			return l_.empty();
-		}
+        bool empty(void){
+          return l_.empty();
+        }
 
-		int size(void){
-			return l_.get_size();		
-		}
+        int size(void){
+          return l_.get_size();		
+        }
 
-		T front(void){
+        T front(void){
 
-			assert(!empty());
-			
-			dll_node_t<T>* node = l_.get_tail();
-			T data = node->get_data();
-			return (data);
-		}
+          assert(!empty());
 
-		T back(void){
+          dll_node_t<T>* node = l_.get_tail();
+          T data = node->get_data();
+          return (data);
+        }
 
-			assert(!empty());
-			
-			dll_node_t<T>* node = l_.get_head();
-			T data = node->get_data();
-			return (data);
-		}
+        T back(void){
 
-		void pop(void){
-			assert(!empty());			
+          assert(!empty());
 
-			dll_node_t<T>* node = l_.extract_tail();
-			delete node;
-		}
+          dll_node_t<T>* node = l_.get_head();
+          T data = node->get_data();
+          return (data);
+        }
 
-		void push(T dato){
+        void pop(void){
+          assert(!empty());			
 
-			dll_node_t<T>* node = new dll_node_t<T>(dato);
-			l_.insert_head(node);
-		}
+          dll_node_t<T>* node = l_.extract_tail();
+          delete node;
+        }
 
-		ostream& write(ostream& os){
-			
+        void push(T dato){
 
-			dll_node_t<T>* aux = l_.get_head();
+          dll_node_t<T>* node = new dll_node_t<T>(dato);
+          l_.insert_head(node);
+        }
 
-			while(aux != NULL){
-				os << setw(4)<< aux->get_data();
-				aux = aux->get_next();
-			}
+        ostream& write(ostream& os){
 
-			os << endl;			
 
-			return os;
-		}
+          dll_node_t<T>* aux = l_.get_head();
 
-	};
-	template <class T>
-	ostream& operator << (ostream& os, queue_l_t<T>& cola)
-	{
-		cola.write(os);
-		return os;
-	}
+          while(aux != NULL){
+            os << setw(4)<< aux->get_data();
+            aux = aux->get_next();
+          }
+
+          os << endl;			
+
+          return os;
+        }
+
+    };
+  template <class T>
+    ostream& operator << (ostream& os, queue_l_t<T>& cola)
+    {
+      cola.write(os);
+      return os;
+    }
 }

@@ -9,144 +9,144 @@
 using namespace std;
 namespace AEDA {
 
-	template <class T>
-	class vector_t{
-	private:
-		T*      v_;
-		int     sz_;
+  template <class T>
+    class vector_t{
+      private:
+        T*      v_;
+        int     sz_;
 
-	public:
+      public:
 
-		vector_t(void):
-			v_(NULL),
-			sz_(0) {}
+        vector_t(void):
+          v_(NULL),
+          sz_(0) {}
 
-		vector_t(int sz):
-			v_(NULL),
-			sz_(sz) {
+        vector_t(int sz):
+          v_(NULL),
+          sz_(sz) {
 
-			crea_vector();
-		}
+            crea_vector();
+          }
 
-		~vector_t(void){
+        ~vector_t(void){
 
-			destruye_vector();
-		}
+          destruye_vector();
+        }
 
-		const int& size ()
-		{
-			return sz_;
-		} 
+        const int& size ()
+        {
+          return sz_;
+        } 
 
-		void resize(int sz)
-		{
-			destruye_vector();
-			sz_ = sz;
-			crea_vector();
-		}
+        void resize(int sz)
+        {
+          destruye_vector();
+          sz_ = sz;
+          crea_vector();
+        }
 
-		int get_sz(void) const
-		{
-			return sz_;
-		}
+        int get_sz(void) const
+        {
+          return sz_;
+        }
 
-		virtual T get_v(int pos) const{
-		
-			assert((pos < sz_) && ((pos >= 0)));
+        virtual T get_v(int pos) const{
 
-			return v_[pos];
-		}
+          assert((pos < sz_) && ((pos >= 0)));
 
-		virtual T& get_set_v(int pos){
+          return v_[pos];
+        }
 
-			assert((pos < sz_) && ((pos >= 0)));
+        virtual T& get_set_v(int pos){
 
-			return v_[pos];
-		}
+          assert((pos < sz_) && ((pos >= 0)));
 
-		T* begin()
-		{
-			return v_;
-		}
+          return v_[pos];
+        }
 
-		void push_back(const T& dato)
-		{
-			v_[sz_ - 1] = dato;
-		}
+        T* begin()
+        {
+          return v_;
+        }
 
-		ostream& write(ostream& os) const{
-	
-			os << setw(5) <<  sz_ << endl;
-			os << endl;
+        void push_back(const T& dato)
+        {
+          v_[sz_ - 1] = dato;
+        }
 
-			for(int i = 0; i < sz_; i ++){
-				v_[i].write(os);
-				os << " ";
-			}
-			os << endl;
-			return os;
-		}
-		
+        ostream& write(ostream& os) const{
 
-		istream& read(istream& is){
-	
-			is >> sz_;
+          os << setw(5) <<  sz_ << endl;
+          os << endl;
 
-			resize(sz_);
-
-			for(int i = 0; i < sz_; i ++)
-			 	is >> v_[i];
-
-			return is;
-		}
-
-	private:
-
-		void crea_vector(void){
-			v_ = new T[sz_];
-		}
-
-		void destruye_vector(void)
-		{
-			if (v_ != NULL){
-				delete [] v_;
-				v_ = NULL;
-			}
-		}
-
-	};
-
-	
-	template <>
-	ostream& vector_t<double>::write(ostream& os) const{
-
-		os << setw(6) <<  sz_ << endl;
-
-		for(int i = 0; i < sz_; i ++)
-		 	os << setw(8) << fixed << setprecision(2) << v_[i] << " ";
-
-		os << endl;
-		return os;
-	}
+          for(int i = 0; i < sz_; i ++){
+            v_[i].write(os);
+            os << " ";
+          }
+          os << endl;
+          return os;
+        }
 
 
-	template <>
-	ostream& vector_t<int>::write(ostream& os) const{
+        istream& read(istream& is){
 
-		os << setw(8) <<  sz_ << endl;
+          is >> sz_;
 
-		for(int i = 0; i < sz_; i ++)
-		 	os << setw(8)  << v_[i] << " ";
+          resize(sz_);
 
-		os << endl;
-		return os;
-	}
-	template <class T>
-	ostream& operator << (ostream& os, vector_t<T> vector)
-	{
-		vector.write(os);
-		return os;
-	}
-	
-	
+          for(int i = 0; i < sz_; i ++)
+            is >> v_[i];
+
+          return is;
+        }
+
+      private:
+
+        void crea_vector(void){
+          v_ = new T[sz_];
+        }
+
+        void destruye_vector(void)
+        {
+          if (v_ != NULL){
+            delete [] v_;
+            v_ = NULL;
+          }
+        }
+
+    };
+
+
+  template <>
+    ostream& vector_t<double>::write(ostream& os) const{
+
+      os << setw(6) <<  sz_ << endl;
+
+      for(int i = 0; i < sz_; i ++)
+        os << setw(8) << fixed << setprecision(2) << v_[i] << " ";
+
+      os << endl;
+      return os;
+    }
+
+
+  template <>
+    ostream& vector_t<int>::write(ostream& os) const{
+
+      os << setw(8) <<  sz_ << endl;
+
+      for(int i = 0; i < sz_; i ++)
+        os << setw(8)  << v_[i] << " ";
+
+      os << endl;
+      return os;
+    }
+  template <class T>
+    ostream& operator << (ostream& os, vector_t<T> vector)
+    {
+      vector.write(os);
+      return os;
+    }
+
+
 }
