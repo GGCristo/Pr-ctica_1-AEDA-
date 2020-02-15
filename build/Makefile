@@ -3,8 +3,8 @@ all:
 run:
 	./../bin/main
 testeo:
-	g++ ../test/test.cpp -o ../test/test
+	g++ ../test/test.cpp -o ../bin/test
 exe:
-	./../test/test
+	./../bin/test
 clean:
-	rm ../bin/main ../test/test
+	rm ../bin/main ../bin/test

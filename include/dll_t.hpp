@@ -104,10 +104,12 @@ namespace AEDA {
     void dll_t<T>::insert_after(dll_node_t<T>* nodo_prev, dll_node_t<T>* nodo)
     {
       assert(nodo != NULL);
-      if (nodo_prev -> get_next() == NULL)
+
+      if (nodo_prev == NULL || nodo_prev -> get_next() == NULL)
       {
         insert_tail(nodo);
       }
+
       else 
       {
         nodo -> set_next(nodo_prev -> get_next());
@@ -115,6 +117,7 @@ namespace AEDA {
         nodo -> set_prev (nodo_prev);
         nodo -> get_next() -> set_prev(nodo);
       }
+      sz_++;
     }
 
   template <class T>
@@ -123,10 +126,13 @@ namespace AEDA {
 
       assert(nodo != NULL);
 
-      if (empty()) {
+      if (empty()) 
+      {
         head_ = nodo;
         tail_ = head_;
-      } else {
+      } 
+      else 
+      {
         tail_ -> set_next(nodo);
         nodo -> set_prev(tail_);
         tail_ = nodo;
@@ -167,6 +173,7 @@ namespace AEDA {
         head_ -> set_prev(NULL);
       else
         tail_ = NULL;
+        
       sz_--;
 
       aux -> set_next(NULL);

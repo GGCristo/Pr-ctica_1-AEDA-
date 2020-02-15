@@ -118,6 +118,29 @@ TEST_CASE ("Listas dobles")
   dll_t<TDato> lista;
   REQUIRE (lista.get_size() == 0);
 
+  SECTION ("Insert_head")
+  {
+    lista.insert_head(new dll_node_t<TDato>(1));
+    lista.insert_head(new dll_node_t<TDato>(3));
+    
+    REQUIRE(lista.get_head() -> get_data() == 3);
+  }
+
+  SECTION ("Insert_tail")
+  {
+    lista.insert_head(new dll_node_t<TDato>(2));
+    lista.insert_head(new dll_node_t<TDato>(1));
+    lista.insert_tail(new dll_node_t<TDato>(3));
+    
+    REQUIRE(lista.get_tail() -> get_data() == 3);
+  }
+
+  SECTION ("Insert_after (Vacio)")
+  { 
+    lista.insert_after(lista.get_head(), new dll_node_t<TDato>(2));
+    REQUIRE(lista.get_head() -> get_data() == 2);
+  }
+
   SECTION ("Insert_after")
   {
     lista.insert_head(new dll_node_t<TDato>(1));
@@ -125,5 +148,41 @@ TEST_CASE ("Listas dobles")
     
     lista.insert_after(lista.get_head(), new dll_node_t<TDato>(2));
     REQUIRE(lista.get_head() -> get_next() -> get_data() == 2);
+  }
+
+  SECTION ("Insert_after (Ultima posición)")
+  {
+    lista.insert_tail(new dll_node_t<TDato>(1));
+    
+    lista.insert_after(lista.get_tail(), new dll_node_t<TDato>(2));
+    REQUIRE(lista.get_tail() -> get_data() == 2);
+  }
+
+   SECTION ("Extract_tail")
+  {
+    lista.insert_tail(new dll_node_t<TDato>(1));
+    lista.insert_tail(new dll_node_t<TDato>(2));
+
+    lista.extract_tail();
+    REQUIRE(lista.get_tail() -> get_data() == 1);
+  }
+
+   SECTION ("Extract_head")
+  {
+    lista.insert_tail(new dll_node_t<TDato>(1));
+    lista.insert_tail(new dll_node_t<TDato>(2));
+
+    lista.extract_head();
+    REQUIRE(lista.get_tail() -> get_data() == 2);
+  }
+
+    SECTION ("Remove")
+  {
+    lista.insert_tail(new dll_node_t<TDato>(1));
+    lista.insert_tail(new dll_node_t<TDato>(2));
+    lista.insert_tail(new dll_node_t<TDato>(3));
+
+    lista.remove(lista.get_head() -> get_next());
+    REQUIRE(lista.get_head() -> get_next() -> get_data() == 3);
   }
 }
