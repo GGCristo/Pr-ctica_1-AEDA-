@@ -33,12 +33,24 @@ int main(){
 
   std::cout << "Lista doblemente enlazada\n";
   dll_t<TDato> lista_d;
-  lista_d.insert_tail(new dll_node_t<int> (1));
-  lista_d.insert_tail(new dll_node_t<int> (2));
-  lista_d.insert_tail(new dll_node_t<int> (3));
-  lista_d.insert_tail(new dll_node_t<int> (4));
-  lista_d.insert_tail(new dll_node_t<int> (5));
-  lista_d.insert_tail(new dll_node_t<int> (6));
+  dll_node_t<int> A(1);
+  dll_node_t<int>* ptr = &A;
+  lista_d.insert_tail(ptr);
+  dll_node_t<int> B(2);
+  ptr = &B;
+  lista_d.insert_tail(ptr);
+  dll_node_t<int> C(3);
+  ptr = &C;
+  lista_d.insert_tail(ptr);
+  dll_node_t<int> D(4);
+  ptr = &D;
+  lista_d.insert_tail(ptr);
+  dll_node_t<int> E(5);
+  ptr = &E;
+  lista_d.insert_tail(ptr);
+  dll_node_t<int> F(6);
+  ptr = &F;
+  lista_d.insert_tail(ptr);
 
   std::cout << lista_d;
 

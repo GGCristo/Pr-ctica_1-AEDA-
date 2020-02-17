@@ -53,18 +53,6 @@ namespace AEDA {
   template <class T>
     dll_t<T>::~dll_t(void) 
     {
-      dll_node_t<T>* aux = NULL;
-
-      while (head_ != NULL) {
-        aux = head_;
-        head_ = head_->get_next();
-        delete aux;
-        aux = NULL;
-      }
-
-      sz_ = 0;
-      head_ = NULL;
-      tail_ = NULL;
     }
 
   template <class T>
