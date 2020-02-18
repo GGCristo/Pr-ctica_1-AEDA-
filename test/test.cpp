@@ -26,6 +26,9 @@ TEST_CASE("Modificaciones en el vector")
   SECTION ("Uso la función push-back")
   {
     vector_i.push_back(5);
+    vector_i.push_back(5);
+    vector_i.push_back(5);
+    vector_i.push_back(5);
     REQUIRE(vector_i.get_v(vector_i.size() - 1) == 5); //  const?
   }
 
