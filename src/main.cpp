@@ -12,7 +12,7 @@ using namespace AEDA;
 int main(){
   typedef int TDato;
   std::cout << "Vector de enteros\n";
-  vector_t<TDato> vector_i(5);
+  vector_t<TDato> vector_i(4); // 5 0 al final
   vector_i.get_set_v(0) = 0;
   vector_i.get_set_v(1) = 5;
   vector_i.get_set_v(2) = 4;
