@@ -71,6 +71,16 @@ namespace AEDA {
 
         void push_back(const T& dato)
         {
+          T* aux_ = new T[sz_];
+          for (int i = 0; i < sz_; i++)
+          {
+            aux_[i] = v_[i];
+          }
+          resize(++sz_);
+          for (int i = 0; i < sz_ - 1; i++)
+          {
+            v_[i] = aux_[i];
+          }
           v_[sz_ - 1] = dato;
         }
 
