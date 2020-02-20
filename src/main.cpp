@@ -6,12 +6,10 @@
 #include "../include/stack_v_t.hpp"
 #include "../include/queue_l_t.hpp"
 
-
+typedef int TDato;
 using namespace AEDA;
-
 int main(){
-  typedef int TDato;
-  std::cout << "Vector de enteros\n";
+  /* std::cout << "Vector de enteros\n";
   vector_t<TDato> vector_i(4); // 5 0 al final
   vector_i.get_set_v(0) = 0;
   vector_i.get_set_v(1) = 5;
@@ -74,6 +72,24 @@ int main(){
   cola.pop();
 
   std::cout << cola;
+*/
+  std::cout << "Modificacion\n";
+  dll_t<TDato> lista1;
+  dll_t<TDato> lista2;
 
+  lista1.insert_tail(new dll_node_t<TDato>(1));
+  lista1.insert_tail(new dll_node_t<TDato>(5));
+  lista1.insert_tail(new dll_node_t<TDato>(35));
+  lista1.insert_tail(new dll_node_t<TDato>(80));
+
+  lista2.insert_tail(new dll_node_t<TDato>(3));
+  lista2.insert_tail(new dll_node_t<TDato>(16));
+  lista2.insert_tail(new dll_node_t<TDato>(44));
+  lista2.insert_tail(new dll_node_t<TDato>(100));
+  
+  dll_t<TDato> resultado;
+  lista1.modificacion(lista2, resultado);
+  resultado.write(std::cout);
   return 0;
 }
+

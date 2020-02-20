@@ -38,6 +38,8 @@ namespace AEDA {
 
         void remove(dll_node_t<T>*);
 
+        void modificacion (dll_t<T>&, dll_t<T>&);
+
         int get_size(void);
 
         ostream& write(ostream& os);
@@ -199,6 +201,7 @@ namespace AEDA {
 
       while (aux != NULL) {
         aux -> write(os);
+        os << "\t";
         aux = aux->get_next();
       }
 
@@ -233,6 +236,38 @@ namespace AEDA {
 
       sz_--;
     }
+  template <class T>
+  void dll_t<T>::modificacion (dll_t<T>& lista2, dll_t<T>& resultado)
+  {
+    dll_node_t<T>* ptr1;
+    dll_node_t<T>* ptr2;
+
+    while (!empty() && !lista2.empty())
+    {
+      ptr1 = get_head();
+      ptr2 = lista2.get_head();
+
+      if (ptr1 -> get_data() < ptr2 -> get_data())
+      {
+        resultado.insert_tail(extract_head());
+      }
+      else
+      {
+        resultado.insert_tail(lista2.extract_head());
+      }
+    }
+
+    while (!empty())
+    {
+      resultado.insert_tail(extract_head());
+    }
+
+    while (!lista2.empty())
+    {
+      resultado.insert_tail(lista2.extract_head());
+    }
+
+  }
 
   template <class T>
     int dll_t<T>::get_size(void) {
