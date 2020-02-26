@@ -33,14 +33,23 @@ namespace AEDA {
 
         dll_node_t<T>* get_tail(void);
         dll_node_t<T>* get_head(void);
+        void set_head(dll_node_t<T>*);
+        void set_tail(dll_node_t<T>*);
 
         bool empty(void);
 
         void remove(dll_node_t<T>*);
 
+
+        dll_node_t<T>* extract(dll_node_t<T>*);
+
         void modificacion (dll_t<T>&, dll_t<T>&);
 
-        int get_size(void);
+        void merge (dll_t<T>&);
+
+        void sort (void);
+
+        int& get_size(void);
 
         ostream& write(ostream& os);
     };
@@ -107,7 +116,7 @@ namespace AEDA {
     {
       assert(nodo != NULL);
 
-      if (nodo_prev == NULL || nodo_prev -> get_next() == NULL)
+      if (nodo_prev -> get_next() == NULL)
       {
         insert_tail(nodo);
       }
@@ -190,6 +199,16 @@ namespace AEDA {
     }
 
   template <class T>
+    void dll_t<T>::set_head(dll_node_t<T>* nodo) {
+      head_ = nodo;
+    }
+
+  template <class T>
+    void dll_t<T>::set_tail(dll_node_t<T>* nodo) {
+      tail_ = nodo;
+    }
+
+  template <class T>
     dll_node_t<T>* dll_t<T>::get_tail(void) {
       return tail_;
     }
@@ -236,6 +255,86 @@ namespace AEDA {
 
       sz_--;
     }
+
+  template<class T>
+    dll_node_t<T>* dll_t<T>::extract(dll_node_t<T>* nodo)
+    {
+      assert(nodo != NULL);
+
+      if (nodo -> get_prev() == NULL)
+      {
+        return extract_head();
+      }
+      else if (nodo -> get_next() == NULL)
+      {
+        return extract_tail();
+      }
+      else
+      {
+        sz_--;
+        nodo -> get_prev() -> set_next(nodo -> get_next());
+        nodo -> get_next() -> set_prev(nodo -> get_prev());
+        nodo -> set_prev(NULL);
+        nodo -> set_next(NULL);
+        return nodo;
+      }
+    }
+
+  template <class T>
+  void dll_t<T>::merge (dll_t<T>& lista2)
+  {
+    get_tail() -> set_next(lista2.get_head());
+    lista2.get_head() -> set_prev(get_tail()); 
+    set_tail(lista2.get_tail());
+    sz_ += lista2.get_size();
+    lista2.set_head(NULL);
+    lista2.set_tail(NULL);
+    lista2.get_size() = 0;
+  }
+
+  template <class T>
+  void dll_t<T>::sort (void)
+  {
+    dll_node_t<T>* pivote;
+
+    for (int i = 0; i < sz_ - 1; i++)
+    {
+      pivote = head_;
+      for (int j = 0; j < i; j++)
+      {
+        pivote = pivote -> get_next(); // pivote = pivote + i;
+      }
+
+      dll_node_t<T>* aux = pivote;
+      int min = aux -> get_data();
+
+      while (aux != tail_)
+      {
+        aux = aux -> get_next();
+        if (aux -> get_data() < min)
+        {
+          min = aux -> get_data();
+        }
+      }
+
+      while (aux -> get_data() != min)
+      {
+        aux = aux -> get_prev();
+      }
+      
+      if (pivote == head_)
+      {
+        insert_head(extract(aux));
+      }
+      else
+      {
+        pivote = pivote -> get_prev();
+        insert_after(pivote, extract(aux));
+      }
+      
+    }
+  }
+  
   template <class T>
   void dll_t<T>::modificacion (dll_t<T>& lista2, dll_t<T>& resultado)
   {
@@ -270,7 +369,7 @@ namespace AEDA {
   }
 
   template <class T>
-    int dll_t<T>::get_size(void) {
+    int& dll_t<T>::get_size(void) {
       return sz_;
     }	
 }

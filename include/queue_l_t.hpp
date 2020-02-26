@@ -67,8 +67,8 @@ namespace AEDA {
           dll_node_t<T>* aux = l_.get_head();
 
           while(aux != NULL){
-            os << setw(4)<< aux->get_data();
-            aux = aux->get_next();
+            os << setw(4) << aux -> get_data();
+            aux = aux -> get_next();
           }
 
           os << endl;			

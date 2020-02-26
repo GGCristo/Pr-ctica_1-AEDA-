@@ -55,6 +55,16 @@ namespace AEDA {
       next_ = NULL;
     }
 
+  template<class T>
+  bool operator < (dll_node_t<T> nodo1, dll_node_t<T> nodo2)
+  {
+    if(nodo1.get_data() < nodo2.get_data())
+    {
+      return true;
+    }
+    return false;
+  }
+
   template <class T>
     void dll_node_t<T>::set_next(dll_node_t<T>* next)
     {

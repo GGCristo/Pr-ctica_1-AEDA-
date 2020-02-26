@@ -1,95 +1,43 @@
 #include <iostream>
+#include <algorithm>
 #include "../include/vector_t.hpp"
 #include "../include/dll_node_t.hpp"
 #include "../include/dll_t.hpp"
 #include "../include/stack_l_t.hpp"
 #include "../include/stack_v_t.hpp"
 #include "../include/queue_l_t.hpp"
-
 typedef int TDato;
 using namespace AEDA;
 int main(){
-  /* std::cout << "Vector de enteros\n";
-  vector_t<TDato> vector_i(4); // 5 0 al final
-  vector_i.get_set_v(0) = 0;
-  vector_i.get_set_v(1) = 5;
-  vector_i.get_set_v(2) = 4;
-  vector_i.get_set_v(3) = 3;
-  vector_i.push_back(2);
-
-  std::cout << vector_i;
-
-  std::cout << "Vector de dobles\n";
-  vector_t<double> vector_d(5);
-  vector_d.get_set_v(0) = 0.0;
-  vector_d.get_set_v(1) = 5.4;
-  vector_d.get_set_v(2) = 4.3;
-  vector_d.get_set_v(3) = 3.2;
-  vector_d.push_back(2.1);
-
-  std::cout << vector_d;
-
-  std::cout << "Lista doblemente enlazada\n";
-  dll_t<TDato> lista_d;
-  lista_d.insert_tail(new dll_node_t<int> (1));
-  lista_d.insert_tail(new dll_node_t<int> (2));
-  lista_d.insert_tail(new dll_node_t<int> (3));
-  lista_d.insert_tail(new dll_node_t<int> (4));
-  lista_d.insert_tail(new dll_node_t<int> (5));
-  lista_d.insert_tail(new dll_node_t<int> (6));
-
-  std::cout << lista_d;
-
-  std::cout << "pila_v con vector\n";
-  stack_v_t<TDato> pila_v;
-  pila_v.push(5);
-  pila_v.push(4); 
-  pila_v.push(3);
-  pila_v.push(2); 
-  pila_v.push(1);
-  pila_v.push(-1);
-
-  std::cout << pila_v;
-
-  std::cout << "Pila con lista\n";
-  stack_l_t<TDato> pila_l;
-  pila_l.push(5);
-  pila_l.push(4); 
-  pila_l.push(3);
-  pila_l.push(2); 
-  pila_l.push(1);
-  pila_l.push(-1);
-
-  std::cout << pila_l;
-
-  std::cout << "Cola\n";
-  queue_l_t<TDato> cola;
-  cola.push(1);
-  cola.push(2);
-  cola.push(3);
-  cola.push(4);
-  cola.push(5);
-  cola.pop();
-
-  std::cout << cola;
-*/
   std::cout << "Modificacion\n";
-  dll_t<TDato> lista1;
-  dll_t<TDato> lista2;
+  dll_t<int> lista1;
+  dll_t<int> lista2;
 
-  lista1.insert_tail(new dll_node_t<TDato>(1));
-  lista1.insert_tail(new dll_node_t<TDato>(5));
-  lista1.insert_tail(new dll_node_t<TDato>(35));
-  lista1.insert_tail(new dll_node_t<TDato>(80));
+  lista1.insert_tail(new dll_node_t<TDato>(15));
+  lista1.insert_tail(new dll_node_t<TDato>(18));
+  lista1.insert_tail(new dll_node_t<TDato>(6));
+  lista1.insert_tail(new dll_node_t<TDato>(0));
 
-  lista2.insert_tail(new dll_node_t<TDato>(3));
-  lista2.insert_tail(new dll_node_t<TDato>(16));
-  lista2.insert_tail(new dll_node_t<TDato>(44));
-  lista2.insert_tail(new dll_node_t<TDato>(100));
-  
-  dll_t<TDato> resultado;
-  lista1.modificacion(lista2, resultado);
-  resultado.write(std::cout);
+  lista2.insert_tail(new dll_node_t<TDato>(-16));
+  lista2.insert_tail(new dll_node_t<TDato>(41));
+  lista2.insert_tail(new dll_node_t<TDato>(58));
+  lista2.insert_tail(new dll_node_t<TDato>(21));
+
+  lista1.merge(lista2);
+  std::cout << lista1 << std::endl;
+
+  lista1.sort();
+  std::cout << lista1 << std::endl;
+
+  dll_t<int> lista3;
+  lista3.insert_tail(new dll_node_t<TDato>(3));
+  lista3.insert_tail(new dll_node_t<TDato>(5));
+  lista3.insert_tail(new dll_node_t<TDato>(4));
+  lista3.insert_tail(new dll_node_t<TDato>(1));
+  lista3.insert_tail(new dll_node_t<TDato>(8));
+  lista3.insert_tail(new dll_node_t<TDato>(0));
+  lista3.sort();
+  std::cout << lista3 << std::endl;
   return 0;
 }
 
