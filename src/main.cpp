@@ -1,5 +1,5 @@
 #include <iostream>
-#include <algorithm>
+#include <ctime>
 #include "../include/vector_t.hpp"
 #include "../include/dll_node_t.hpp"
 #include "../include/dll_t.hpp"
@@ -36,8 +36,13 @@ int main(){
   lista3.insert_tail(new dll_node_t<TDato>(1));
   lista3.insert_tail(new dll_node_t<TDato>(8));
   lista3.insert_tail(new dll_node_t<TDato>(0));
+  unsigned t0, t1;
+  t0 = clock();
   lista3.sort();
+  t1 = clock();
   std::cout << lista3 << std::endl;
+  double time = (double(t1 - t0)/CLOCKS_PER_SEC)*(3600);
+  std::cout << "Execution Time: " << time << std::endl;
   return 0;
 }
 
