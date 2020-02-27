@@ -304,32 +304,28 @@ namespace AEDA {
       {
         pivote = pivote -> get_next(); // pivote = pivote + i;
       }
-
+      
       dll_node_t<T>* aux = pivote;
-      int min = aux -> get_data();
+      dll_node_t<T>* min = aux;
+      // int min = aux -> get_data();
 
       while (aux != tail_)
       {
         aux = aux -> get_next();
-        if (aux -> get_data() < min)
+        if (aux -> get_data() < min -> get_data())
         {
-          min = aux -> get_data();
+          min = aux;
         }
-      }
-
-      while (aux -> get_data() != min)
-      {
-        aux = aux -> get_prev();
       }
       
       if (pivote == head_)
       {
-        insert_head(extract(aux));
+        insert_head(extract(min));
       }
       else
       {
         pivote = pivote -> get_prev();
-        insert_after(pivote, extract(aux));
+        insert_after(pivote, extract(min));
       }
       
     }
