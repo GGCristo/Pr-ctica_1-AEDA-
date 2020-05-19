@@ -1,7 +1,11 @@
 dist: trusty
-sudo: required
 language:
   - cpp
 compiler:
   - gcc
 script:
+  make test
+notifications:
+  email:
+    recipinets:
+      cgg.code@gmail.com
