@@ -11,16 +11,21 @@
 typedef int TDato;
 using namespace AEDA;
 
-TEST_CASE("Modificaciones en el vector") 
+TEST_CASE("Fallo a proposito")
 {
-  
+  REQUIRE(false);
+}
+
+TEST_CASE("Modificaciones en el vector")
+{
+
   vector_t<TDato> vector_i(5);
   REQUIRE (vector_i.size() == 5);
-  
+
   SECTION ("Accedo a un elemento")
   {
     vector_i.get_set_v(4) = 3;
-    REQUIRE(vector_i.get_v(4) == 3); 
+    REQUIRE(vector_i.get_v(4) == 3);
   }
 
   SECTION ("Uso la función push-back")
@@ -43,7 +48,7 @@ TEST_CASE("Modificaciones en el vector")
     vector_i.get_set_v(0) = 1;
     REQUIRE(*vector_i.begin() == 1);
   }
-  
+
   SECTION("Prueba de punteros (++)")
   {
     vector_i.get_set_v(1) = 2;
@@ -51,7 +56,7 @@ TEST_CASE("Modificaciones en el vector")
     variable++;
     REQUIRE(*variable == 2);
   }
-  
+
 }
 TEST_CASE ("Modificaciones en la pila")
 {
@@ -117,7 +122,7 @@ TEST_CASE ("Modificaciones en la cola")
 
 TEST_CASE ("Listas dobles")
 {
-  
+
   dll_t<TDato> lista;
   REQUIRE (lista.get_size() == 0);
 
@@ -125,7 +130,7 @@ TEST_CASE ("Listas dobles")
   {
     lista.insert_head(new dll_node_t<TDato>(1));
     lista.insert_head(new dll_node_t<TDato>(3));
-    
+
     REQUIRE(lista.get_head() -> get_data() == 3);
   }
 
@@ -134,12 +139,12 @@ TEST_CASE ("Listas dobles")
     lista.insert_head(new dll_node_t<TDato>(2));
     lista.insert_head(new dll_node_t<TDato>(1));
     lista.insert_tail(new dll_node_t<TDato>(3));
-    
+
     REQUIRE(lista.get_tail() -> get_data() == 3);
   }
 
   SECTION ("Insert_after (Vacio)")
-  { 
+  {
     lista.insert_after(lista.get_head(), new dll_node_t<TDato>(2));
     REQUIRE(lista.get_head() -> get_data() == 2);
   }
@@ -148,7 +153,7 @@ TEST_CASE ("Listas dobles")
   {
     lista.insert_head(new dll_node_t<TDato>(1));
     lista.insert_head(new dll_node_t<TDato>(3));
-    
+
     lista.insert_after(lista.get_head(), new dll_node_t<TDato>(2));
     REQUIRE(lista.get_head() -> get_next() -> get_data() == 2);
   }
@@ -156,7 +161,7 @@ TEST_CASE ("Listas dobles")
   SECTION ("Insert_after (Ultima posición)")
   {
     lista.insert_tail(new dll_node_t<TDato>(1));
-    
+
     lista.insert_after(lista.get_tail(), new dll_node_t<TDato>(2));
     REQUIRE(lista.get_tail() -> get_data() == 2);
   }

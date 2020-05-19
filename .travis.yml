@@ -7,5 +7,4 @@ script:
   make test
 notifications:
   email:
-    recipinets:
-      cgg.code@gmail.com
+    cgg.code@gmail.com
