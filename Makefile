@@ -6,7 +6,7 @@ debug:
 	g++ -g src/main.cpp -o bin/main
 .PHONY: test
 test: test/catch.hpp test/test.cpp
-	g++ test/test.cpp -o bin/test
+	g++ -std=c++11 test/test.cpp -o bin/test
 	./bin/test
 clean:
 	@rm bin/*
