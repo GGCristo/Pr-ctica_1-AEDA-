@@ -8,4 +8,4 @@ test: test/catch.hpp test/test.cpp
 	g++ test/test.cpp -o bin/test
 	./bin/test
 clean:
-	rm bin/*
+	@rm bin/*
