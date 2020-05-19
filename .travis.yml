@@ -22,6 +22,6 @@ script:
 notifications:
   email:
     recipients:
-    - alu0101204512@ull.edu.es
+    - cgg.code@gmail.com
     on_success: never
     on_failure: always
