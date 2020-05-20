@@ -11,11 +11,6 @@
 typedef int TDato;
 using namespace AEDA;
 
-TEST_CASE("Fallo a proposito")
-{
-  REQUIRE(false);
-}
-
 TEST_CASE("Modificaciones en el vector")
 {
 

@@ -22,7 +22,7 @@ namespace AEDA {
       public:
 
         dll_t(void);
-        virtual ~dll_t(void); 
+        virtual ~dll_t(void);
 
         void insert_tail(dll_node_t<T>*);
         void insert_after(dll_node_t<T>*, dll_node_t<T>*);
@@ -62,7 +62,7 @@ namespace AEDA {
       sz_(0) {}
 
   template <class T>
-    dll_t<T>::~dll_t(void) 
+    dll_t<T>::~dll_t(void)
     {
       dll_node_t<T>* aux = NULL;
 
@@ -79,7 +79,7 @@ namespace AEDA {
     }
 
   template <class T>
-    bool dll_t<T>::empty(void) 
+    bool dll_t<T>::empty(void)
     {
       if (head_ == NULL)
       {
@@ -87,22 +87,22 @@ namespace AEDA {
         assert(sz_ == 0);
 
         return true;
-      } 
-      else 
+      }
+      else
         return false;
     }
 
   template <class T>
-    void dll_t<T>::insert_head(dll_node_t<T>* nodo) 
+    void dll_t<T>::insert_head(dll_node_t<T>* nodo)
     {
       assert(nodo != NULL);
 
-      if (empty()) 
+      if (empty())
       {
         head_ = nodo;
         tail_ = head_;
-      } 
-      else 
+      }
+      else
       {
         head_ -> set_prev(nodo);
         nodo -> set_next(head_);
@@ -116,12 +116,11 @@ namespace AEDA {
     {
       assert(nodo != NULL);
 
-      if (nodo_prev -> get_next() == NULL)
-      {
+      if (!nodo_prev)
+        insert_head(nodo);
+      else if (nodo_prev -> get_next() == NULL)
         insert_tail(nodo);
-      }
-
-      else 
+      else
       {
         nodo -> set_next(nodo_prev -> get_next());
         nodo_prev -> set_next(nodo);
@@ -132,17 +131,17 @@ namespace AEDA {
     }
 
   template <class T>
-    void dll_t<T>::insert_tail(dll_node_t<T>* nodo) 
+    void dll_t<T>::insert_tail(dll_node_t<T>* nodo)
     {
 
       assert(nodo != NULL);
 
-      if (empty()) 
+      if (empty())
       {
         head_ = nodo;
         tail_ = head_;
-      } 
-      else 
+      }
+      else
       {
         tail_ -> set_next(nodo);
         nodo -> set_prev(tail_);
@@ -153,7 +152,7 @@ namespace AEDA {
     }
 
   template <class T>
-    dll_node_t<T>* dll_t<T>::extract_tail(void) 
+    dll_node_t<T>* dll_t<T>::extract_tail(void)
     {
       assert(!empty());
 
@@ -184,7 +183,7 @@ namespace AEDA {
         head_ -> set_prev(NULL);
       else
         tail_ = NULL;
-        
+
       sz_--;
 
       aux -> set_next(NULL);
@@ -236,7 +235,7 @@ namespace AEDA {
     }
 
   template <class T>
-    void dll_t<T>::remove(dll_node_t<T>* nodo) 
+    void dll_t<T>::remove(dll_node_t<T>* nodo)
     {
 
       assert(nodo != NULL);
@@ -284,7 +283,7 @@ namespace AEDA {
   void dll_t<T>::merge (dll_t<T>& lista2)
   {
     get_tail() -> set_next(lista2.get_head());
-    lista2.get_head() -> set_prev(get_tail()); 
+    lista2.get_head() -> set_prev(get_tail());
     set_tail(lista2.get_tail());
     sz_ += lista2.get_size();
     lista2.set_head(NULL);
@@ -304,7 +303,7 @@ namespace AEDA {
       {
         pivote = pivote -> get_next(); // pivote = pivote + i;
       }
-      
+
       dll_node_t<T>* aux = pivote;
       dll_node_t<T>* min = aux;
 
@@ -316,7 +315,7 @@ namespace AEDA {
           min = aux;
         }
       }
-      
+
       if (pivote == head_)
       {
         insert_head(extract(min));
@@ -326,10 +325,10 @@ namespace AEDA {
         pivote = pivote -> get_prev();
         insert_after(pivote, extract(min));
       }
-      
+
     }
   }
-  
+
   template <class T>
   void dll_t<T>::modificacion (dll_t<T>& lista2, dll_t<T>& resultado)
   {
@@ -366,5 +365,5 @@ namespace AEDA {
   template <class T>
     int& dll_t<T>::get_size(void) {
       return sz_;
-    }	
+    }
 }
