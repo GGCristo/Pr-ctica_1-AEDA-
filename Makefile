@@ -33,7 +33,7 @@ test: $(TESTBIN)
 	./bin/test
 
 bin/%: test/%.cpp test/catch.hpp
-	g++ $< -o $@
+	g++ -std=c++17 $< -o $@
 
 #build/(NOMBRE).o: src/(NOMBRE).cpp include/(NOMBRE).hpp include/.hpp
 	#g++ -c $< -o $@
